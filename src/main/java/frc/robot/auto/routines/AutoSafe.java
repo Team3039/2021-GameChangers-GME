@@ -30,9 +30,10 @@ public class AutoSafe extends ParallelCommandGroup {
   public AutoSafe() {
     addCommands(
             new ResetOdometryAuto(),
-            new ParallelDeadlineGroup(
-                new WaitCommand(3), 
-                new AutoShootNear()),
+        //     new ParallelDeadlineGroup(
+        //         new WaitCommand(3),
+        //         new AutoShootNear()
+        //         ),
             new WaitCommand(3),
             new RamseteCommand(
                     mTrajectories.getLeftStartToSafe(),

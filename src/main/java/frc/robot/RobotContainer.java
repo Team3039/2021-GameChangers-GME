@@ -61,6 +61,7 @@ public class RobotContainer {
     Button driverR3 = driverPad.getR3();
     Button downDpad =  driverPad.getDPadDown();
     Button startButton = driverPad.getStartButton();
+    Button driverR2 = driverPad.getR2();
 
 		//Operator Buttons
 		Button operatorTriangle = operatorPad.getButtonTriangle();
@@ -85,7 +86,8 @@ public class RobotContainer {
     
     //Driver
     driverL1.whileHeld(new DeployWinches());
-    driverR1.whileHeld(new Climb());
+    driverR1.whileHeld(new IntakeCells());
+    driverR1.whenReleased(new IndexCells());
     driverOptions.whileHeld(new RetractClimbArms(.50));
     driverOptions.whenReleased(new RetractClimbArms(0));
     downDpad.whileHeld(new RetractClimbArms(.70));
@@ -94,6 +96,11 @@ public class RobotContainer {
     driverShare.whenPressed(new ClimbDeploy());
     startButton.whileHeld(new SetClimbArmSpeed(.4));
     startButton.whenReleased(new SetClimbArmSpeed(0));
+    driverCircle.whenPressed(new ShootNearShot());
+    driverR2.whileHeld(new FeedCells());
+    // When the feed command ends, the systems are all reset
+    driverR2.whenReleased(new ResetHopper());
+    driverR2.whenReleased(new ResetShooter());
 
     //Operator
     //When X is pressed it turns on the shooter to a set RPM (5800) raises the hood and starts tracking
@@ -103,8 +110,8 @@ public class RobotContainer {
     //When Triangle is pressed it turns on the shooter to a set RPM(4800) raises the hood and starts tracking
     operatorTriangle.whenPressed(new ShootNearShot());
     //When Right Bumper is held the intake comes down and the intaking sequence runs 
-    operatorR1.whileHeld(new IntakeCells());
-    operatorR1.whenReleased(new IndexCells());
+    // operatorR1.whileHeld(   new IntakeCells());
+    // operatorR1.whenReleased(new IndexCells());
     //When Right Trigger is held the feeding sequence runs 
     operatorR2.whileHeld(new FeedCells());
     // When the feed command ends, the systems are all reset

@@ -254,6 +254,42 @@ public class TrajectoryGenerator {
             return leftStartToSafe;
         }
 
+        public Trajectory getLeftStartToSafeTest() {
+                Trajectory leftStartToSafe;
+                leftStartToSafe = edu.wpi.first.wpilibj.trajectory.TrajectoryGenerator.generateTrajectory(
+                        new Pose2d(Units.inchesToMeters(0), Units.inchesToMeters(0), new Rotation2d(Units.degreesToRadians(0))),
+                        List.of(
+                                new Translation2d(Units.inchesToMeters(-50), Units.inchesToMeters(0)),
+                                new Translation2d(Units.inchesToMeters(-100), Units.inchesToMeters(0)),
+                                new Translation2d(Units.inchesToMeters(-150), Units.inchesToMeters(0)),
+                                new Translation2d(Units.inchesToMeters(-200), Units.inchesToMeters(0)),
+                                new Translation2d(Units.inchesToMeters(-250), Units.inchesToMeters(0))
+                        ),
+                        new Pose2d(Units.inchesToMeters(-300), Units.inchesToMeters(0), new Rotation2d(Units.degreesToRadians(0))),
+                        // Pass config
+                        reverseConfigSlow
+                );
+                return leftStartToSafe;
+            }
+
+        public Trajectory getSafeToLeftStartTest() {
+                Trajectory safeToLeftStart;
+                safeToLeftStart = edu.wpi.first.wpilibj.trajectory.TrajectoryGenerator.generateTrajectory(
+                        new Pose2d(Units.inchesToMeters(-300), Units.inchesToMeters(0), new Rotation2d(Units.degreesToRadians(0))),
+                        List.of(
+                                new Translation2d(Units.inchesToMeters(-250), Units.inchesToMeters(0)),
+                                new Translation2d(Units.inchesToMeters(-200), Units.inchesToMeters(0)),
+                                new Translation2d(Units.inchesToMeters(-150), Units.inchesToMeters(0)),
+                                new Translation2d(Units.inchesToMeters(-100), Units.inchesToMeters(0)),
+                                new Translation2d(Units.inchesToMeters(-50), Units.inchesToMeters(0))
+                        ),
+                        new Pose2d(Units.inchesToMeters(0), Units.inchesToMeters(0), new Rotation2d(Units.degreesToRadians(0))),
+                        // Pass config
+                        forwardConfigFast
+                );
+                return safeToLeftStart;
+            }
+
     public Trajectory getLeftStartToSafeForward(){
         Trajectory leftStartToSafe;
         leftStartToSafe = edu.wpi.first.wpilibj.trajectory.TrajectoryGenerator.generateTrajectory(
@@ -269,4 +305,3 @@ public class TrajectoryGenerator {
     }
         //End 3 Ball Safe Auto
     }
-

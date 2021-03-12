@@ -26,9 +26,9 @@ public class ShootMidShot extends SequentialCommandGroup {
     // super(new FooCommand(), new BarCommand());
     super(
           new SetIsFar(true),
-          new ActuateHood(false),
-          new SetTurretTrackMode(),
-          new SetShooterSpeedRPM(Constants.SHOOT_MID_SHOT_RPM)
+          // new ActuateHood(false),
+          new SetTurretTrackMode()
+          // new SetShooterSpeedRPM(Constants.SHOOT_MID_SHOT_RPM)
           );
   }
 }

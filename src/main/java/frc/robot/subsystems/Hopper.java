@@ -57,8 +57,8 @@ public class Hopper extends SubsystemBase {
   }
 
   public Hopper() {
-    backFeederBelt.setInverted(true);
-    frontFeederBeltWheel.setInverted(false);
+    backFeederBelt.setInverted(false);
+    frontFeederBeltWheel.setInverted(true);
 
     backFeederBelt.setNeutralMode(NeutralMode.Coast);
     frontFeederBeltWheel.setNeutralMode(NeutralMode.Coast);
@@ -100,7 +100,7 @@ public class Hopper extends SubsystemBase {
           break;
         case INTAKING:
           if (!getTopBeam() && !getLowBeam()) {
-            setHopperSpeed(.2, .4, .4);
+            setHopperSpeed(.4, .6, .6);
           }
           else if (getTopBeam() && !getLowBeam()) {
             setKickerSpeed(.2);
@@ -113,10 +113,10 @@ public class Hopper extends SubsystemBase {
           break;
         case FEEDING:
             if (RobotContainer.shooter.isFar) {
-            setHopperSpeed(.2, .28, .28);
+            setHopperSpeed(.3, .38, .38);
             }
             else {
-              setHopperSpeed(.2, .5, .5);
+              setHopperSpeed(.3, .59, .59);
             }
           break;
         case UNJAMMING:

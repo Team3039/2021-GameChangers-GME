@@ -26,7 +26,7 @@ public class ShootFarShot extends SequentialCommandGroup {
     // super(new FooCommand(), new BarCommand());
     super(
           new SetIsFar(true),
-          new ActuateHood(false),
+          // new ActuateHood(false),
           new SetTurretTrackMode(),
           new SetShooterSpeedRPM(Constants.SHOOT_FAR_SHOT_RPM)
           );

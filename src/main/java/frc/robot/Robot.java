@@ -19,12 +19,13 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
+import frc.robot.auto.routines.AutoBouncePath;
 import frc.robot.auto.routines.AutoDoNothing;
 import frc.robot.auto.routines.AutoRendezvousTrench10Ball;
 import frc.robot.auto.routines.AutoSafe;
-import frc.robot.auto.routines.AutoTest;
 import frc.robot.auto.routines.AutoTrench8Ball;
 import frc.robot.auto.routines.AutoTrenchSteal;
+// import frc.robot.auto.routines.TestA;
 import frc.robot.subsystems.Drive;
 import frc.robot.subsystems.Turret.TurretControlMode;
 
@@ -69,7 +70,7 @@ public class Robot extends TimedRobot {
     autonTaskChooser.addOption("Rendezvous/Trench 10 Ball Auto", new AutoRendezvousTrench10Ball());
     autonTaskChooser.addOption("Safe 3 Ball Auto", new AutoSafe());
 
-    autonTaskChooser.addOption("Test", new AutoTest());
+    autonTaskChooser.addOption("Bounce Path Auto", new AutoBouncePath());
 
     SmartDashboard.putData("Autonomous", autonTaskChooser);
 
