@@ -20,6 +20,8 @@ import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.TalonFX;
 
+import edu.wpi.first.wpilibj.AnalogInput;
+import edu.wpi.first.wpilibj.Servo;
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
@@ -36,13 +38,28 @@ public class Shooter extends SubsystemBase {
 
     public Solenoid hood = new Solenoid(RobotMap.hood);
     public boolean isFar = false;
+    public Servo hoodFlux = new Servo(RobotMap.hoodFlux);
+    public AnalogInput hoodSensor = new AnalogInput(RobotMap.hoodSensor);
 
     public void actuateHood(boolean lowerHood) {
-        if(lowerHood){
-            hood.set(false);
-        }else{
+        if (lowerHood){
             hood.set(true);
+        } 
+        else{
+            hood.set(false);
         }
+    }
+
+    public void getServoPose() {
+        hoodSensor.getValue();
+    }
+
+    public void extendHood() {
+        hoodFlux.setAngle(120);
+    }
+
+    public void lowerHood() {
+        hoodFlux.setAngle(0);
     }
 
     public Shooter() {

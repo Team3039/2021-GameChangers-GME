@@ -2,9 +2,12 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj2.command.button.Button;
+import frc.robot.commands.ActuateHood;
 import frc.robot.commands.Climb;
 import frc.robot.commands.DeployClimbArms;
 import frc.robot.commands.DeployWinches;
+import frc.robot.commands.ExtendHood;
+import frc.robot.commands.LowerHood;
 import frc.robot.commands.RetractClimbArms;
 import frc.robot.commands.SetClimbArmSpeed;
 import frc.robot.commands.SetHopperIdleMode;
@@ -29,6 +32,7 @@ import frc.robot.subsystems.Hopper;
 import frc.robot.subsystems.Intake;
 import frc.robot.subsystems.Shooter;
 import frc.robot.subsystems.Turret;
+
 public class RobotContainer {
  
   public final static Drive drive = Drive.getInstance();
@@ -59,7 +63,8 @@ public class RobotContainer {
 		Button driverR1 = driverPad.getR1();
 		// Button driverR2 = driverPad.getR2();
     Button driverR3 = driverPad.getR3();
-    Button downDpad =  driverPad.getDPadDown();
+    Button driverDownDpad = driverPad.getDPadDown();
+    Button driverUpDPad = driverPad.getDPadUp();
     Button startButton = driverPad.getStartButton();
     Button driverR2 = driverPad.getR2();
 
@@ -90,9 +95,9 @@ public class RobotContainer {
     driverR1.whenReleased(new IndexCells());
     driverOptions.whileHeld(new RetractClimbArms(.50));
     driverOptions.whenReleased(new RetractClimbArms(0));
-    downDpad.whileHeld(new RetractClimbArms(.70));
+    driverUpDPad.toggleWhenPressed(new ExtendHood());
+    driverDownDpad.toggleWhenPressed(new LowerHood());
     driverTriangle.whenPressed(new SetTurretClimbMode());
-    downDpad.whenReleased(new RetractClimbArms(0));
     driverShare.whenPressed(new ClimbDeploy());
     startButton.whileHeld(new SetClimbArmSpeed(.4));
     startButton.whenReleased(new SetClimbArmSpeed(0));

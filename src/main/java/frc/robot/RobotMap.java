@@ -40,11 +40,13 @@ public class RobotMap {
   public final static int hood = 3;
 
 //PWM
+  public final static int hoodFlux = 0;
 
 //DIO	
   public final static int turretSwitch = 0;
   public final static int topBeam = 1;
   public final static int lowBeam = 2;
+  public final static int hoodSensor = 3;
 
 //AIO
 }
