@@ -2,9 +2,6 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj2.command.button.Button;
-import frc.robot.commands.ActuateHood;
-import frc.robot.commands.Climb;
-import frc.robot.commands.DeployClimbArms;
 import frc.robot.commands.DeployWinches;
 import frc.robot.commands.ExtendHood;
 import frc.robot.commands.LowerHood;

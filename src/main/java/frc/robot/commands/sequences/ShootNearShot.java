@@ -9,7 +9,6 @@ package frc.robot.commands.sequences;
 
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import frc.robot.Constants;
-import frc.robot.commands.ActuateHood;
 import frc.robot.commands.SetIsFar;
 import frc.robot.commands.SetShooterSpeedRPM;
 import frc.robot.commands.SetTurretTrackMode;

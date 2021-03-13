@@ -109,6 +109,35 @@ public class TrajectoryGenerator {
 
     }
 
+    public Trajectory getBounceStartToTrenchStart() {
+        Trajectory bounceStartToTrenchStart;
+        bounceStartToTrenchStart = edu.wpi.first.wpilibj.trajectory.TrajectoryGenerator.generateTrajectory(
+        new Pose2d(Units.inchesToMeters(0), Units.inchesToMeters(0), new Rotation2d(0)),
+        List.of(
+                new Translation2d(Units.inchesToMeters(42), Units.inchesToMeters(0)),
+                new Translation2d(Units.inchesToMeters(83), Units.inchesToMeters(0)),
+                new Translation2d(Units.inchesToMeters(90), Units.inchesToMeters(64))
+        ), 
+        new Pose2d(Units.inchesToMeters(110), Units.inchesToMeters(64), new Rotation2d(0)),
+        forwardConfigSlow
+        );
+        return bounceStartToTrenchStart;
+    }
+
+    public Trajectory getTrenchStartToTrenchEnd() {
+        Trajectory trenchStartToTrenchEnd;
+        trenchStartToTrenchEnd = edu.wpi.first.wpilibj.trajectory.TrajectoryGenerator.generateTrajectory(
+                new Pose2d(Units.inchesToMeters(0), Units.inchesToMeters(0), new Rotation2d(0)), 
+                List.of(
+                        new Translation2d(Units.inchesToMeters(64), Units.inchesToMeters(0)),
+                        new Translation2d(Units.inchesToMeters(122), Units.inchesToMeters(0))
+                ), 
+                new Pose2d(Units.inchesToMeters(130), Units.inchesToMeters(0), new Rotation2d(0)), 
+                forwardConfigFast
+                );
+                return trenchStartToTrenchEnd;
+    }
+
     public Trajectory getEndOfTrenchToStartOfTrench() {
             Trajectory endOfTrenchToStartOfTrench;
             endOfTrenchToStartOfTrench = edu.wpi.first.wpilibj.trajectory.TrajectoryGenerator.generateTrajectory(
