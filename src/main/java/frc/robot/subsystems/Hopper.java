@@ -24,7 +24,7 @@ import frc.robot.RobotMap;
  */
 public class Hopper extends SubsystemBase {
 
-  public VictorSPX kickerWheel = new VictorSPX(RobotMap.kickerWheel);
+  public TalonSRX kickerWheel = new TalonSRX(RobotMap.kickerWheel);
   public TalonSRX backFeederBelt = new TalonSRX(RobotMap.backFeederBelt);
   public TalonSRX frontFeederBeltWheel = new TalonSRX(RobotMap.fronFeederBeltWheel);
 
@@ -60,8 +60,8 @@ public class Hopper extends SubsystemBase {
     backFeederBelt.setInverted(false);
     frontFeederBeltWheel.setInverted(true);
 
-    backFeederBelt.setNeutralMode(NeutralMode.Coast);
-    frontFeederBeltWheel.setNeutralMode(NeutralMode.Coast);
+    backFeederBelt.setNeutralMode(NeutralMode.Brake);
+    frontFeederBeltWheel.setNeutralMode(NeutralMode.Brake);
     kickerWheel.setNeutralMode(NeutralMode.Brake);
   }
 
@@ -110,13 +110,16 @@ public class Hopper extends SubsystemBase {
           else if (getTopBeam() && getLowBeam()){
             setHopperSpeed(0, 0, 0);
           }
+          else if (!getTopBeam() && getLowBeam()) {
+            setHopperSpeed(.4, .6, .6);
+          }
           break;
         case FEEDING:
             if (RobotContainer.shooter.isFar) {
-            setHopperSpeed(.3, .38, .38);
+            setHopperSpeed(.7, .4, .4);
             }
             else {
-              setHopperSpeed(.3, .59, .59);
+              setHopperSpeed(.7, .4, .4);
             }
           break;
         case UNJAMMING:

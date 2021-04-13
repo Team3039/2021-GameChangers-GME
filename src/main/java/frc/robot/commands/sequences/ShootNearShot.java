@@ -27,7 +27,7 @@ public class ShootNearShot extends SequentialCommandGroup {
           new SetIsFar(false),
           // new ActuateHood(false),
           new SetTurretTrackMode(),
-          new SetShooterSpeedRPM(Constants.SHOOT_NEAR_SHOT_RPM)
+          new SetShooterSpeedRPM(Constants.SHOOT_FAR_SHOT_RPM)
           );
   }
 }

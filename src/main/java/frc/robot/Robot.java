@@ -21,8 +21,10 @@ import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import frc.robot.auto.routines.AutoBouncePath;
 import frc.robot.auto.routines.AutoDoNothing;
+import frc.robot.auto.routines.AutoHyperPath;
 import frc.robot.auto.routines.AutoRendezvousTrench10Ball;
 import frc.robot.auto.routines.AutoSafe;
+import frc.robot.auto.routines.AutoSlalomPath;
 import frc.robot.auto.routines.AutoTrench8Ball;
 import frc.robot.auto.routines.AutoTrenchSteal;
 // import frc.robot.auto.routines.TestA;
@@ -38,6 +40,7 @@ import frc.robot.subsystems.Turret.TurretControlMode;
 public class Robot extends TimedRobot {
   public Command m_autonomousCommand;
   private SendableChooser<Command> autonTaskChooser;
+  public static double servoPose;
 
 
   RobotContainer m_robotContainer;
@@ -71,11 +74,16 @@ public class Robot extends TimedRobot {
     autonTaskChooser.addOption("Safe 3 Ball Auto", new AutoSafe());
 
     autonTaskChooser.addOption("Bounce Path Auto", new AutoBouncePath());
+    autonTaskChooser.addOption("Slalom Path Auto", new AutoSlalomPath());
+    autonTaskChooser.addOption("Hyper Path Auto", new AutoHyperPath());
 
     SmartDashboard.putData("Autonomous", autonTaskChooser);
 
+    
+
     UsbCamera usbCamera = CameraServer.getInstance().startAutomaticCapture();
     usbCamera.setVideoMode(VideoMode.PixelFormat.kYUYV, 320, 180, 60);
+    servoPose = 0.5;
   }
 
   /**
@@ -87,6 +95,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotPeriodic() {
+    SmartDashboard.putNumber("SERVO POSE", RobotContainer.shooter.getServoPose());
     // Runs the Scheduler.  This is responsible for polling buttons, adding newly-scheduled
     // commands, running already-scheduled commands, removing finished or interrupted commands,
     // and running subsystem periodic() methods. This must be called from the robot's periodic
@@ -98,6 +107,7 @@ public class Robot extends TimedRobot {
     targetY = NetworkTableInstance.getDefault().getTable("limelight").getEntry("ty").getDouble(0);
     targetArea = NetworkTableInstance.getDefault().getTable("limelight").getEntry("ta").getDouble(0);
     CommandScheduler.getInstance().run();
+    System.out.println("At " + targetArea + ", the servo position is :: " + servoPose);
   }
 
   /**
@@ -122,7 +132,7 @@ public class Robot extends TimedRobot {
     drive.setControlMode(Drive.DriveControlMode.PATH_FOLLOWING);
     drive.resetOdometry(new Pose2d());
 
-    m_autonomousCommand = autonTaskChooser.getSelected();
+    m_autonomousCommand = new AutoBouncePath();
 
 
     /*

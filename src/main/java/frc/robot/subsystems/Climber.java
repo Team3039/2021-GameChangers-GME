@@ -20,16 +20,14 @@ public class Climber extends SubsystemBase {
   
   public TalonSRX climberA = new TalonSRX(RobotMap.climberA);
   public TalonSRX climberB = new TalonSRX(RobotMap.climberB);
-  public VictorSPX climberC = new VictorSPX(RobotMap.climberC);
 
   public Solenoid climbRelease = new Solenoid(RobotMap.climbRelease);
 
   public Climber() {
-    climberC.setSelectedSensorPosition(0);
+    // climberC.setSelectedSensorPosition(0);
     climberA.setInverted(true);
     climberB.setInverted(true);
     climberB.follow(climberA);
-    climberC.setNeutralMode(NeutralMode.Brake);
   }
 
   public void actuateClimb() {
@@ -37,11 +35,11 @@ public class Climber extends SubsystemBase {
   }
 
   public void deploy(double percentOutput) {
-    climberC.set(ControlMode.PercentOutput, Math.abs(percentOutput));
+    // climberC.set(ControlMode.PercentOutput, Math.abs(percentOutput));
   }
 
   public void release(double percentOutput) {
-    climberC.set(ControlMode.PercentOutput, percentOutput * -1);
+    // climberC.set(ControlMode.PercentOutput, percentOutput * -1);
   }
 
   public void retract(double power) {

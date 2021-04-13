@@ -19,7 +19,7 @@ public class RobotMap {
   public static int intake = 1;
 
   //Indexer
-  public final static int kickerWheel = 8;
+  public final static int kickerWheel = 11;
   public final static int backFeederBelt = 9;
   public final static int fronFeederBeltWheel = 10;
 
@@ -29,7 +29,7 @@ public class RobotMap {
   //Climber
   public final static int climberA = 3;
   public final static int climberB = 11;
-  public final static int climberC = 0;
+  public final static int climberC = 8;
 
 
 //SOLENOID
@@ -38,9 +38,9 @@ public class RobotMap {
   public final static int buddyDeploy = 2;
   public final static int climbRelease = 1;
   public final static int hood = 3;
-
 //PWM
-  public final static int hoodFlux = 0;
+  public final static int hoodServo = 0;
+  public final static int hoodServoB = 1;
 
 //DIO	
   public final static int turretSwitch = 0;

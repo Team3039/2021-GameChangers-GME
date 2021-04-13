@@ -19,6 +19,7 @@ import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.TalonFX;
+import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 
 import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.Servo;
@@ -26,6 +27,8 @@ import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import edu.wpi.first.wpiutil.math.MathUtil;
+import frc.robot.Robot;
+import frc.robot.RobotContainer;
 import frc.robot.RobotMap;
 
 /**
@@ -35,10 +38,12 @@ public class Shooter extends SubsystemBase {
 
     public TalonFX shooterA = new TalonFX(RobotMap.shooterA);
     public TalonFX shooterB = new TalonFX(RobotMap.shooterB);
+    public VictorSPX topWheel = new VictorSPX(RobotMap.climberC);
 
     public Solenoid hood = new Solenoid(RobotMap.hood);
     public boolean isFar = false;
-    public Servo hoodFlux = new Servo(RobotMap.hoodFlux);
+    public Servo hoodServoA = new Servo(RobotMap.hoodServo);
+    public Servo hoodServoB = new Servo(RobotMap.hoodServoB);
     public AnalogInput hoodSensor = new AnalogInput(RobotMap.hoodSensor);
 
     public void actuateHood(boolean lowerHood) {
@@ -50,23 +55,19 @@ public class Shooter extends SubsystemBase {
         }
     }
 
-    public void getServoPose() {
-        hoodSensor.getValue();
+    public void setHoodPosition(double theta) {
+        hoodServoA.set(theta);
+        hoodServoB.set(Math.abs(1-theta));
     }
 
-    public void extendHood() {
-        hoodFlux.setAngle(120);
-    }
-
-    public void lowerHood() {
-        hoodFlux.setAngle(0);
+    public double getServoPose() {
+        return hoodServoA.getAngle();
     }
 
     public Shooter() {
         shooterA.configFactoryDefault();
         shooterB.configFactoryDefault();
         shooterA.configSelectedFeedbackSensor(FeedbackDevice.IntegratedSensor);
-
 
         shooterA.setInverted(true);
         shooterA.setSensorPhase(true);
@@ -76,6 +77,7 @@ public class Shooter extends SubsystemBase {
 
         shooterA.setNeutralMode(NeutralMode.Coast);
         shooterB.setNeutralMode(NeutralMode.Coast);
+        topWheel.setNeutralMode(NeutralMode.Coast);
 
         shooterA.config_kP(0, kP_SHOOTER);
         shooterA.config_kI(0, kI_SHOOTER);
@@ -120,6 +122,10 @@ public class Shooter extends SubsystemBase {
         shooterA.set(ControlMode.Velocity, shooterRPMToNativeUnits(rpm));
     }
 
+    public void setTopWheel(double speed) {
+        topWheel.set(ControlMode.PercentOutput, speed);
+    }
+
     public double shooterRPMToNativeUnits(double rpm) {
         return rpm * SHOOTER_OUTPUT_TO_ENCODER_RATIO * TICKS_PER_ROTATION / 10.0 / 60.0;
     }
@@ -141,5 +147,6 @@ public class Shooter extends SubsystemBase {
         //     isFar = false;
         // }
         SmartDashboard.putBoolean("Is Far", isFar());
+        System.out.println(hoodServoA.getPosition());
     }
 }

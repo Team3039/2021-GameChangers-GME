@@ -24,8 +24,7 @@ public class FeedCells extends SequentialCommandGroup {
     // Add your commands in the super() call, e.g.
     // super(new FooCommand(), new BarCommand());
     super(new ActuateIntake(false),
-          new SetIntakeSpeed(-.9),
-          new WaitCommand(1.5),
+          new WaitCommand(.75),
           new SetHopperFeedingMode());
   }
 }

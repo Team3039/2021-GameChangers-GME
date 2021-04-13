@@ -11,6 +11,8 @@ import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import frc.robot.commands.ActuateIntake;
 import frc.robot.commands.SetHopperIntakingMode;
 import frc.robot.commands.SetIntakeSpeed;
+import frc.robot.commands.SetShooterSpeedRPM;
+import frc.robot.commands.SetTopWheel;
 
 // NOTE:  Consider using this command inline, rather than writing a subclass.  For more
 // information, see:
@@ -22,8 +24,8 @@ public class IntakeCells extends SequentialCommandGroup {
   public IntakeCells() {
     // Add your commands in the super() call, e.g.
     // super(new FooCommand(), new BarCommand());
-   super(new ActuateIntake(true),
-          new SetIntakeSpeed(-.99),
+   super(
+          // new SetIntakeSpeed(-.99),
           new SetHopperIntakingMode());
   }
 }

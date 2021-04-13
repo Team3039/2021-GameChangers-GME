@@ -109,33 +109,231 @@ public class TrajectoryGenerator {
 
     }
 
-    public Trajectory getBounceStartToTrenchStart() {
-        Trajectory bounceStartToTrenchStart;
-        bounceStartToTrenchStart = edu.wpi.first.wpilibj.trajectory.TrajectoryGenerator.generateTrajectory(
+    public Trajectory getSlalomStartToTrenchStart() {
+        Trajectory slalomStartToTrenchStart;
+        slalomStartToTrenchStart = edu.wpi.first.wpilibj.trajectory.TrajectoryGenerator.generateTrajectory(
         new Pose2d(Units.inchesToMeters(0), Units.inchesToMeters(0), new Rotation2d(0)),
         List.of(
-                new Translation2d(Units.inchesToMeters(42), Units.inchesToMeters(0)),
-                new Translation2d(Units.inchesToMeters(83), Units.inchesToMeters(0)),
-                new Translation2d(Units.inchesToMeters(90), Units.inchesToMeters(64))
+                new Translation2d(Units.inchesToMeters(53), Units.inchesToMeters(39)),
+                new Translation2d(Units.inchesToMeters(75), Units.inchesToMeters(85)),
+                new Translation2d(Units.inchesToMeters(120), Units.inchesToMeters(85)),
+                new Translation2d(Units.inchesToMeters(200), Units.inchesToMeters(85))
+                // new Translation2d(Units.inchesToMeters(249), Units.inchesToMeters(33)),
+                // new Translation2d(Units.inchesToMeters(284), Units.inchesToMeters(-14)),
+                // new Translation2d(Units.inchesToMeters(296), Units.inchesToMeters(57)),
+                // new Translation2d(Units.inchesToMeters(243), Units.inchesToMeters(47)),
+                // new Translation2d(Units.inchesToMeters(160), Units.inchesToMeters(-25)),
+                // new Translation2d(Units.inchesToMeters(110), Units.inchesToMeters(-25)),
+                // new Translation2d(Units.inchesToMeters(60), Units.inchesToMeters(-25)),
+                // new Translation2d(Units.inchesToMeters(20), Units.inchesToMeters(19))
         ), 
-        new Pose2d(Units.inchesToMeters(110), Units.inchesToMeters(64), new Rotation2d(0)),
-        forwardConfigSlow
+        new Pose2d(Units.inchesToMeters(249), Units.inchesToMeters(33), Rotation2d.fromDegrees(0)),
+        forwardConfigFast
         );
-        return bounceStartToTrenchStart;
+        return slalomStartToTrenchStart;
     }
 
-    public Trajectory getTrenchStartToTrenchEnd() {
-        Trajectory trenchStartToTrenchEnd;
-        trenchStartToTrenchEnd = edu.wpi.first.wpilibj.trajectory.TrajectoryGenerator.generateTrajectory(
-                new Pose2d(Units.inchesToMeters(0), Units.inchesToMeters(0), new Rotation2d(0)), 
+//     public Trajectory getTrenchStartToTrenchEndA() {
+//         Trajectory trenchStartToTrenchEndA;
+//         trenchStartToTrenchEndA = edu.wpi.first.wpilibj.trajectory.TrajectoryGenerator.generateTrajectory(
+//                 new Pose2d(Units.inchesToMeters(199), Units.inchesToMeters(40), new Rotation2d(0)), 
+//                 List.of(
+//                         new Translation2d(Units.inchesToMeters(235), Units.inchesToMeters(-5))
+//                 ), 
+//                 new Pose2d(Units.inchesToMeters(250), Units.inchesToMeters(35), Rotation2d.fromDegrees(155)), 
+//                 forwardConfigSlow
+//                 );
+//                 return trenchStartToTrenchEndA;
+//     }
+
+//     public Trajectory getTrenchStartToTrenchEndB() {
+//         Trajectory trenchStartToTrenchEndB;
+//         trenchStartToTrenchEndB = edu.wpi.first.wpilibj.trajectory.TrajectoryGenerator.generateTrajectory(
+//                 new Pose2d(Units.inchesToMeters(250), Units.inchesToMeters(35), Rotation2d.fromDegrees(155)), 
+//                 List.of(
+//                 ), 
+//                 new Pose2d(Units.inchesToMeters(183), Units.inchesToMeters(-10), Rotation2d.fromDegrees(180)), 
+//                 forwardConfigSlow
+//                 );
+//                 return trenchStartToTrenchEndB;
+//     }
+
+    public Trajectory getTrenchStartToSpin() {
+        Trajectory trenchStartToSpin;
+        trenchStartToSpin = edu.wpi.first.wpilibj.trajectory.TrajectoryGenerator.generateTrajectory(
+                new Pose2d(Units.inchesToMeters(83), Units.inchesToMeters(77), Rotation2d.fromDegrees(0)), 
                 List.of(
-                        new Translation2d(Units.inchesToMeters(64), Units.inchesToMeters(0)),
-                        new Translation2d(Units.inchesToMeters(122), Units.inchesToMeters(0))
+                        new Translation2d(Units.inchesToMeters(217), Units.inchesToMeters(77)),
+                        new Translation2d(Units.inchesToMeters(249), Units.inchesToMeters(33)),
+                        new Translation2d(Units.inchesToMeters(284), Units.inchesToMeters(-14)),
+                        new Translation2d(Units.inchesToMeters(286), Units.inchesToMeters(57)),
+                        new Translation2d(Units.inchesToMeters(243), Units.inchesToMeters(47))
                 ), 
-                new Pose2d(Units.inchesToMeters(130), Units.inchesToMeters(0), new Rotation2d(0)), 
+                new Pose2d(Units.inchesToMeters(200), Units.inchesToMeters(-25), Rotation2d.fromDegrees(180)), 
                 forwardConfigFast
                 );
-                return trenchStartToTrenchEnd;
+                return trenchStartToSpin;
+    }
+
+    public Trajectory getTrenchEndToTrenchStart() {
+        Trajectory trenchEndToTrenchStart;
+        trenchEndToTrenchStart = edu.wpi.first.wpilibj.trajectory.TrajectoryGenerator.generateTrajectory(
+                new Pose2d(Units.inchesToMeters(245), Units.inchesToMeters(53), Rotation2d.fromDegrees(180)), 
+                List.of(
+                        new Translation2d(Units.inchesToMeters(183), Units.inchesToMeters(-20)),
+                        new Translation2d(Units.inchesToMeters(144), Units.inchesToMeters(-20)),
+                        new Translation2d(Units.inchesToMeters(94), Units.inchesToMeters(-20))
+                ), 
+                new Pose2d(Units.inchesToMeters(30), Units.inchesToMeters(30), Rotation2d.fromDegrees(180)), 
+                forwardConfigFast
+                );
+                return trenchEndToTrenchStart;
+    }
+
+    public Trajectory getBounceStartToFirstBall() {
+        Trajectory bounceStartToFirstBall;
+        bounceStartToFirstBall = edu.wpi.first.wpilibj.trajectory.TrajectoryGenerator.generateTrajectory(
+                new Pose2d(Units.inchesToMeters(0), Units.inchesToMeters(0), Rotation2d.fromDegrees(0)), 
+                List.of(
+                        new Translation2d(Units.inchesToMeters(62), Units.inchesToMeters(20))
+                ), 
+                new Pose2d(Units.inchesToMeters(65), Units.inchesToMeters(72), Rotation2d.fromDegrees(90)), 
+                forwardConfigFast
+                );
+                return bounceStartToFirstBall;
+    }
+
+    
+    public Trajectory getSecondBallToThirdTrench() {
+        Trajectory secondBallToThirdTrench;
+        secondBallToThirdTrench = edu.wpi.first.wpilibj.trajectory.TrajectoryGenerator.generateTrajectory(
+                new Pose2d(Units.inchesToMeters(160), Units.inchesToMeters(68), Rotation2d.fromDegrees(270)), 
+                List.of(
+                        new Translation2d(Units.inchesToMeters(173), Units.inchesToMeters(0)),
+                        new Translation2d(Units.inchesToMeters(164), Units.inchesToMeters(-75)),
+                        new Translation2d(Units.inchesToMeters(222), Units.inchesToMeters(-80))
+                ), 
+                new Pose2d(Units.inchesToMeters(240), Units.inchesToMeters(84), Rotation2d.fromDegrees(90)), 
+                forwardConfigFast
+                );
+                return secondBallToThirdTrench;
+    }
+
+    public Trajectory getThirdBallToFinalPose() {
+        Trajectory thirdBallToFinalPose;
+        thirdBallToFinalPose = edu.wpi.first.wpilibj.trajectory.TrajectoryGenerator.generateTrajectory(
+                new Pose2d(Units.inchesToMeters(240), Units.inchesToMeters(70), Rotation2d.fromDegrees(90)), 
+                List.of(
+                ), 
+                new Pose2d(Units.inchesToMeters(290), Units.inchesToMeters(-20), Rotation2d.fromDegrees(180)), 
+                reverseConfigFast
+                );
+                return thirdBallToFinalPose;
+    }
+
+    public Trajectory getFirstBallToSecondTrench() {
+        Trajectory firstBallToSecondTrench;
+        firstBallToSecondTrench = edu.wpi.first.wpilibj.trajectory.TrajectoryGenerator.generateTrajectory(
+                new Pose2d(Units.inchesToMeters(77), Units.inchesToMeters(67), Rotation2d.fromDegrees(90)), 
+                List.of(
+                        new Translation2d(Units.inchesToMeters(73), Units.inchesToMeters(0)),
+                        new Translation2d(Units.inchesToMeters(85), Units.inchesToMeters(-75)),
+                        new Translation2d(Units.inchesToMeters(160), Units.inchesToMeters(-107)),
+                        new Translation2d(Units.inchesToMeters(170), Units.inchesToMeters(-65))
+                ), 
+                new Pose2d(Units.inchesToMeters(175), Units.inchesToMeters(72), Rotation2d.fromDegrees(270)), 
+                reverseConfigFast
+                );
+                return firstBallToSecondTrench;
+    }
+
+    public Trajectory getBounceToFinalPoseA() {
+        Trajectory bounceToFinalPoseA;
+        bounceToFinalPoseA = edu.wpi.first.wpilibj.trajectory.TrajectoryGenerator.generateTrajectory(
+                new Pose2d(Units.inchesToMeters(74), Units.inchesToMeters(0), Rotation2d.fromDegrees(150)), 
+                List.of(
+                ), 
+                new Pose2d(Units.inchesToMeters(48), Units.inchesToMeters(30), Rotation2d.fromDegrees(180)), 
+                forwardConfigFast
+                );
+                return bounceToFinalPoseA;
+    }
+
+    public Trajectory getBounceToFinalPoseB() {
+        Trajectory bounceToFinalPoseB;
+        bounceToFinalPoseB = edu.wpi.first.wpilibj.trajectory.TrajectoryGenerator.generateTrajectory(
+                new Pose2d(Units.inchesToMeters(48), Units.inchesToMeters(30), Rotation2d.fromDegrees(180)), 
+                List.of(
+                ), 
+                new Pose2d(Units.inchesToMeters(20), Units.inchesToMeters(30), Rotation2d.fromDegrees(180)), 
+                forwardConfigSlow
+                );
+                return bounceToFinalPoseB;
+    }
+
+    public Trajectory getSlalomToFinalPose() {
+        Trajectory slalomToFinalPose;
+        slalomToFinalPose = edu.wpi.first.wpilibj.trajectory.TrajectoryGenerator.generateTrajectory(
+                new Pose2d(Units.inchesToMeters(200), Units.inchesToMeters(-25), Rotation2d.fromDegrees(180)), 
+                List.of(
+                        new Translation2d(Units.inchesToMeters(160), Units.inchesToMeters(-25)),
+                        new Translation2d(Units.inchesToMeters(110), Units.inchesToMeters(-25)),
+                        new Translation2d(Units.inchesToMeters(60), Units.inchesToMeters(-25)),
+                        new Translation2d(Units.inchesToMeters(40), Units.inchesToMeters(19))
+                ), 
+                new Pose2d(Units.inchesToMeters(-20), Units.inchesToMeters(68), Rotation2d.fromDegrees(180)), 
+                forwardConfigFast
+                );
+                return slalomToFinalPose;
+    }
+
+    public Trajectory getHyperStartToSecondTurn() {
+        Trajectory hyperStartToSecondTurn;
+        hyperStartToSecondTurn = edu.wpi.first.wpilibj.trajectory.TrajectoryGenerator.generateTrajectory(
+                new Pose2d(Units.inchesToMeters(0), Units.inchesToMeters(0), Rotation2d.fromDegrees(0)), 
+                List.of(
+                        new Translation2d(Units.inchesToMeters(70), Units.inchesToMeters(0)),
+                        new Translation2d(Units.inchesToMeters(100), Units.inchesToMeters(0)),
+                        new Translation2d(Units.inchesToMeters(165), Units.inchesToMeters(0)),
+                        new Translation2d(Units.inchesToMeters(180), Units.inchesToMeters(-60)),
+                        new Translation2d(Units.inchesToMeters(150), Units.inchesToMeters(-100)),
+                        new Translation2d(Units.inchesToMeters(120), Units.inchesToMeters(-90)),
+                        new Translation2d(Units.inchesToMeters(70), Units.inchesToMeters(-80)),
+                        // new Translation2d(Units.inchesToMeters(35), Units.inchesToMeters(-30)),
+                        new Translation2d(Units.inchesToMeters(90), Units.inchesToMeters(0)),
+                        new Translation2d(Units.inchesToMeters(120), Units.inchesToMeters(10)),
+                        new Translation2d(Units.inchesToMeters(200), Units.inchesToMeters(10)),
+                        new Translation2d(Units.inchesToMeters(230), Units.inchesToMeters(20)),
+                        // new Translation2d(Units.inchesToMeters(250), Units.inchesToMeters(45)),
+                        new Translation2d(Units.inchesToMeters(200), Units.inchesToMeters(80)),
+                        new Translation2d(Units.inchesToMeters(170), Units.inchesToMeters(80)),
+                        new Translation2d(Units.inchesToMeters(130), Units.inchesToMeters(80)),
+                        new Translation2d(Units.inchesToMeters(120), Units.inchesToMeters(20)),
+                        new Translation2d(Units.inchesToMeters(245), Units.inchesToMeters(-55)),
+                        new Translation2d(Units.inchesToMeters(300), Units.inchesToMeters(-55)),
+                        new Translation2d(Units.inchesToMeters(260), Units.inchesToMeters(20)),
+                        new Translation2d(Units.inchesToMeters(200), Units.inchesToMeters(20)),
+                        new Translation2d(Units.inchesToMeters(100), Units.inchesToMeters(20))
+                //         new Translation2d(Units.inchesToMeters(220), Units.inchesToMeters(20)),
+                //         new Translation2d(Units.inchesToMeters(245), Units.inchesToMeters(20))
+                ), 
+                new Pose2d(Units.inchesToMeters(-40), Units.inchesToMeters(20), Rotation2d.fromDegrees(180)), 
+                forwardConfigFast
+                );
+                return hyperStartToSecondTurn;
+    }
+
+    public Trajectory getHyperSecondTurnToThirdTurn() {
+        Trajectory hyperSecondTurnToThirdTurn;
+        hyperSecondTurnToThirdTurn = edu.wpi.first.wpilibj.trajectory.TrajectoryGenerator.generateTrajectory(
+                new Pose2d(Units.inchesToMeters(200), Units.inchesToMeters(10), Rotation2d.fromDegrees(0)), 
+                List.of(
+                        new Translation2d(Units.inchesToMeters(250), Units.inchesToMeters(15))
+                ), 
+                new Pose2d(Units.inchesToMeters(200), Units.inchesToMeters(40), Rotation2d.fromDegrees(-105)), 
+                forwardConfigFast
+                );
+                return hyperSecondTurnToThirdTurn;
     }
 
     public Trajectory getEndOfTrenchToStartOfTrench() {
@@ -331,6 +529,19 @@ public class TrajectoryGenerator {
                 forwardConfigFast
         );
         return leftStartToSafe;
+    }
+    public Trajectory getStartToTrenchStart(){
+        Trajectory startToTrenchStart;
+        startToTrenchStart = edu.wpi.first.wpilibj.trajectory.TrajectoryGenerator.generateTrajectory(
+                new Pose2d(Units.inchesToMeters(0), Units.inchesToMeters(0), new Rotation2d(Units.degreesToRadians(0))),
+                List.of(
+                        new Translation2d(Units.inchesToMeters(40), Units.inchesToMeters(0))
+                ),
+                new Pose2d(Units.inchesToMeters(60), Units.inchesToMeters(0), new Rotation2d(Units.degreesToRadians(0))),
+                // Pass config
+                forwardConfigFast
+        );
+        return startToTrenchStart;
     }
         //End 3 Ball Safe Auto
     }

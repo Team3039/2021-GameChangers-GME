@@ -22,15 +22,14 @@ import edu.wpi.first.wpilibj.util.Units;
 
 public final class Constants {
     //Drive 
-    public static final double DRIVER_Y = .85;
-    public static final double DRIVER_ROT = .35;
+    public static final double DRIVER_Y = .8;
+    public static final double DRIVER_ROT = .45;
 
     // 2020 Drive Constants
     public static final double kWheelDiameterInches = 5.835;
     public static final double kTrackWidthInches = 28.5;
     public static final double kDriveEncoderPPR = 2048;
     public static final double kEncoderRotationToWheelRotationRatio = 9.0/1.0;
-
 
     public static final double kTrackWidthMeters = Units.inchesToMeters(kTrackWidthInches);
     public static final DifferentialDriveKinematics kDriveKinematics =
@@ -46,17 +45,17 @@ public final class Constants {
     public static final double kMinSpeedMetersPerSecond = Units.feetToMeters(4.5); //Find good value
     public static final double kMinAcclerationMetersPerSecondSquared = Math.pow(Units.feetToMeters(4.5), 2);
 
-
-    public static final double kMaxSpeedMetersPerSecond = Units.feetToMeters(8.0); //Find good value
-    public static final double kMaxAccelerationMetersPerSecondSquared = Math.pow(Units.feetToMeters(8.0), 2);
+    public static final double kMaxSpeedMetersPerSecond = Units.feetToMeters(10.5); //Find good value
+    public static final double kMaxAccelerationMetersPerSecondSquared = Math.pow(Units.feetToMeters(8), 2);
 
     // Reasonable baseline values for a RAMSETE follower in units of meters and seconds
     public static final double kRamseteB = 2.0;
     public static final double kRamseteZeta = 0.7;
 
     //Turret
-    public static final double kP_TURRET = -0.025;
+    public static final double kP_TURRET = -0.027;
     public static final double TURRET_RATIO = 15155.2;
+
     public static final double PPR = 3.7;
     public static final double TURRET_PPR_TO_DEGREES = 360 / TURRET_RATIO; //How many degrees is one tick
 
@@ -73,11 +72,11 @@ public final class Constants {
 
     public static final double SHOOT_NEAR_SHOT_RPM = 4975;
     public static final double SHOOT_MID_SHOT_RPM = 5750;
-    public static final double SHOOT_FAR_SHOT_RPM = 5800;
+    public static final double SHOOT_FAR_SHOT_RPM = 5000;
 
     public static final double AUTO_SHOOT_NEAR_SHOT_RPM = 5000;
     public static final double AUTO_SHOOT_MID_SHOT_RPM =  5600;
-    public static final double AUTO_SHOOT_FAR_SHOT_RPM = 6575;
+    public static final double AUTO_SHOOT_FAR_SHOT_RPM = 4900;
 
     //Color Wheel
     public static final double COLOR_WHEEL_PPR = 0;

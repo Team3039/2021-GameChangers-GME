@@ -21,17 +21,18 @@ public class LowerHood extends CommandBase {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    RobotContainer.shooter.lowerHood();
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
+    RobotContainer.shooter.lowerHood();
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
+    RobotContainer.shooter.haltHood();
   }
 
   // Returns true when the command should end.

@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import edu.wpi.first.wpilibj2.command.WaitCommand;
 import frc.robot.commands.ActuateHood;
 import frc.robot.commands.SetShooterSpeed;
+import frc.robot.commands.SetTopWheel;
 import frc.robot.commands.SetTurretDriverMode;
 import frc.robot.commands.SetTurretJoystickMode;
 

@@ -22,7 +22,7 @@ public class ShootMidShot extends SequentialCommandGroup {
     // Add your commands in the super() call, e.g.
     // super(new FooCommand(), new BarCommand());
     super(
-          new SetIsFar(true),
+          // new SetIsFar(true),
           // new ActuateHood(false),
           new SetTurretTrackMode()
           // new SetShooterSpeedRPM(Constants.SHOOT_MID_SHOT_RPM)

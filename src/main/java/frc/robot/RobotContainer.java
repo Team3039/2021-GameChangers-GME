@@ -3,15 +3,16 @@ package frc.robot;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj2.command.button.Button;
 import frc.robot.commands.DeployWinches;
-import frc.robot.commands.ExtendHood;
-import frc.robot.commands.LowerHood;
 import frc.robot.commands.RetractClimbArms;
 import frc.robot.commands.SetClimbArmSpeed;
+import frc.robot.commands.SetHood;
 import frc.robot.commands.SetHopperIdleMode;
 import frc.robot.commands.SetHopperUnjamMode;
 import frc.robot.commands.SetIntakeSpeed;
 import frc.robot.commands.SetShooterSpeed;
 import frc.robot.commands.SetTurretClimbMode;
+import frc.robot.commands.SetTurretTrackMode;
+import frc.robot.commands.ShiftServo;
 import frc.robot.commands.sequences.ClimbDeploy;
 import frc.robot.commands.sequences.FeedCells;
 import frc.robot.commands.sequences.IndexCells;
@@ -60,8 +61,6 @@ public class RobotContainer {
 		Button driverR1 = driverPad.getR1();
 		// Button driverR2 = driverPad.getR2();
     Button driverR3 = driverPad.getR3();
-    Button driverDownDpad = driverPad.getDPadDown();
-    Button driverUpDPad = driverPad.getDPadUp();
     Button startButton = driverPad.getStartButton();
     Button driverR2 = driverPad.getR2();
 
@@ -87,22 +86,28 @@ public class RobotContainer {
 
     
     //Driver
-    driverL1.whileHeld(new DeployWinches());
-    driverR1.whileHeld(new IntakeCells());
-    driverR1.whenReleased(new IndexCells());
-    driverOptions.whileHeld(new RetractClimbArms(.50));
-    driverOptions.whenReleased(new RetractClimbArms(0));
-    driverUpDPad.toggleWhenPressed(new ExtendHood());
-    driverDownDpad.toggleWhenPressed(new LowerHood());
-    driverTriangle.whenPressed(new SetTurretClimbMode());
-    driverShare.whenPressed(new ClimbDeploy());
-    startButton.whileHeld(new SetClimbArmSpeed(.4));
-    startButton.whenReleased(new SetClimbArmSpeed(0));
-    driverCircle.whenPressed(new ShootNearShot());
+    // driverL1.whileHeld(new DeployWinches());
+    // driverR1.whileHeld(new IntakeCells());
+    // driverR1.whenReleased(new IndexCells());
+    // driverOptions.whileHeld(new RetractClimbArms(.50));
+    // driverOptions.whenReleased(new RetractClimbArms(0));
+    // driverX.whileHeld(new SetHood(0.4));
+    // driverPadButton.whileHeld(new SetHood(1));
+    // driverTriangle.whenPressed(new SetTurretClimbMode());
+    // driverShare.whenPressed(new ClimbDeploy());
+    // startButton.whileHeld(new SetClimbArmSpeed(.4));
+    // startButton.whenReleased(new SetClimbArmSpeed(0));
+    driverSquare.whenPressed(new IntakeCells());
+    driverTriangle.whenPressed(new SetHood(1));
+    driverX.whenPressed(new ShiftServo(-0.5));
+    driverR1.whenPressed(new ShiftServo(0.25));
+    driverL1.whenPressed(new ShiftServo(-0.25));
+    driverCircle.whenPressed(new ShootFarShot());
     driverR2.whileHeld(new FeedCells());
     // When the feed command ends, the systems are all reset
     driverR2.whenReleased(new ResetHopper());
-    driverR2.whenReleased(new ResetShooter());
+    driverOptions.whenPressed(new SetTurretTrackMode());
+    // driverR2.whenReleased(new ResetShooter());
 
     //Operator
     //When X is pressed it turns on the shooter to a set RPM (5800) raises the hood and starts tracking
